@@ -6,15 +6,17 @@
 # XPO - How to use the Database Schema Migrations API
 
 > ### Note
-> The Database Schema Migrations API is available as CTP. We can change the API in the final version. Use it for evaluation and testing purposes only. Refer to the [Database Schema Migrations]() blog post for additional information.
+> The Database Schema Migrations API is available as CTP. We can change API in the final version. Use it for evaluation and testing purposes only. Refer to the [Database Schema Migrations]() blog post for additional information.
 
-To support Database Schema Migrations, [XPO Data Store Adapters](https://docs.devexpress.com/XPO/2114/fundamentals/database-systems-supported-by-xpo) implement the following interfaces:
+To support Database Schema Migrations, [XPO Data Store Providers](https://docs.devexpress.com/XPO/2114/fundamentals/database-systems-supported-by-xpo) implement the following interfaces:
 - **IDataStoreSupportSchemaMigration** - exposes methods to compare the Data Model with the database schema and apply differences to the database schema.
 - **IUpdateSchemaSqlFormatter** - exposes methods to generate SQL statements for manual schema update.
 
-To compare the database schema and generate the schema migration script programmatically, cast a Data Store Adapter object to these interfaces and call the `IDataStoreSupportSchemaMigration.GetDataStoreSchema` and `IUpdateSchemaSqlFormatter.FormatUpdateSchemaScript` methods subsequently.
+To retrieve differences and generate the schema migration script programmatically, cast a data store provider object to these interfaces and call the `IDataStoreSupportSchemaMigration.CompareSchema` and `IUpdateSchemaSqlFormatter.FormatUpdateSchemaScript` methods subsequently. 
 
-### A code example
+The `FormatUpdateSchemaScript` method returns SQL statements as a plain text. If you want to get SQL statements as an array, use the `IUpdateSchemaSqlFormatter.FormatUpdateSchemaStatements` method.
+
+### A code example:
 
 <details>
     <summary>C#</summary>
@@ -50,4 +52,4 @@ Dim sql As String = migrationScriptFormatter.FormatUpdateSchemaScript(updateSche
 </details>
 
 > ### Note
-> The following Data Store Adapters support Database Schema Migrations in the current version: [MSSqlConnectionProvider](https://docs.devexpress.com/XPO/DevExpress.Xpo.DB.MSSqlConnectionProvider), **MySqlConnectionProvider**, **OracleConnectionProvider**, **ODPConnectionProvider**, **ODPManagedConnectionProvider**, and **PostgreSqlConnectionProvider**.
+> The following data store providers support Database Schema Migrations in the current version: [MSSqlConnectionProvider](https://docs.devexpress.com/XPO/DevExpress.Xpo.DB.MSSqlConnectionProvider), **MySqlConnectionProvider**, **OracleConnectionProvider**, **ODPConnectionProvider**, **ODPManagedConnectionProvider**, and **PostgreSqlConnectionProvider**.
