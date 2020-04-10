@@ -3,7 +3,7 @@
 * [Program.cs](./CS/Program.cs) (VB: [Program.vb](./VB/Program.vb))
 <!-- default file list end -->
 
-# XPO - How to use the Database Schema Migrations API
+# XPO - How to Use the Database Schema Migrations API
 
 > ### Note
 > The Database Schema Migrations API is available as CTP. Refer to the [Database Schema Migrations (CTP)](https://supportcenter.devexpress.com/ticket/details/t879111) KB article for additional information.
@@ -16,7 +16,7 @@ To retrieve differences and generate the schema migration script programmaticall
 
 The `FormatUpdateSchemaScript` method returns SQL statements as a plain text. If you want to get SQL statements as an array, use the `IUpdateSchemaSqlFormatter.FormatUpdateSchemaStatements` method.
 
-### A code example:
+### Code examples:
 
 <details>
     <summary>C#</summary>
