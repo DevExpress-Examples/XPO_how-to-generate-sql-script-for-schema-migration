@@ -6,7 +6,7 @@
 # XPO - How to use the Database Schema Migrations API
 
 > ### Note
-> The Database Schema Migrations API is available as CTP. We can change API in the final version. Use it for evaluation and testing purposes only. Refer to the [Database Schema Migrations]() blog post for additional information.
+> The Database Schema Migrations API is available as CTP. Refer to the [Database Schema Migrations (CTP)](https://supportcenter.devexpress.com/ticket/details/t879111) KB article for additional information.
 
 To support Database Schema Migrations, [XPO Data Store Providers](https://docs.devexpress.com/XPO/2114/fundamentals/database-systems-supported-by-xpo) implement the following interfaces:
 - **IDataStoreSupportSchemaMigration** - exposes methods used to compare the Data Model with the database schema and to apply differences to the database schema.
@@ -50,6 +50,3 @@ Dim updateSchemaStatements = dataStoreSupportsMigration.CompareSchema(targetSche
 Dim sql As String = migrationScriptFormatter.FormatUpdateSchemaScript(updateSchemaStatements)
 ```
 </details>
-
-> ### Note
-> The following data store providers support Database Schema Migrations in the current version: [MSSqlConnectionProvider](https://docs.devexpress.com/XPO/DevExpress.Xpo.DB.MSSqlConnectionProvider), **MySqlConnectionProvider**, **OracleConnectionProvider**, **ODPConnectionProvider**, **ODPManagedConnectionProvider**, and **PostgreSqlConnectionProvider**.
