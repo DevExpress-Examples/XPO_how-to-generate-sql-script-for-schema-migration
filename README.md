@@ -9,8 +9,8 @@
 > The Database Schema Migrations API is available as CTP. We can change API in the final version. Use it for evaluation and testing purposes only. Refer to the [Database Schema Migrations]() blog post for additional information.
 
 To support Database Schema Migrations, [XPO Data Store Providers](https://docs.devexpress.com/XPO/2114/fundamentals/database-systems-supported-by-xpo) implement the following interfaces:
-- **IDataStoreSupportSchemaMigration** - exposes methods to compare the Data Model with the database schema and apply differences to the database schema.
-- **IUpdateSchemaSqlFormatter** - exposes methods to generate SQL statements for manual schema update.
+- **IDataStoreSupportSchemaMigration** - exposes methods used to compare the Data Model with the database schema and to apply differences to the database schema.
+- **IUpdateSchemaSqlFormatter** - exposes methods used to generate SQL statements for a manual schema update.
 
 To retrieve differences and generate the schema migration script programmatically, cast a data store provider object to these interfaces and call the `IDataStoreSupportSchemaMigration.CompareSchema` and `IUpdateSchemaSqlFormatter.FormatUpdateSchemaScript` methods subsequently. 
 
