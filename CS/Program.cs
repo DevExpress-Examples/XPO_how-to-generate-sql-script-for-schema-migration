@@ -13,14 +13,14 @@ namespace XpoSchemaMigration {
         static void Main(string[] args) {
 
             IDataStore provider = XpoDefault.GetConnectionProvider(ConnectionString, AutoCreateOption.DatabaseAndSchema);
-            var dataStoreSupportsMigration = (IDataStoreSupportSchemaMigration)provider;
+            var migrationProvider = (IDataStoreSchemaMigrationProvider)provider;
             var migrationScriptFormatter = (IUpdateSchemaSqlFormatter)provider;
 
             var dictionary = new ReflectionDictionary();
             DBTable[] targetSchema = dictionary.GetDataStoreSchema(typeof(Customer), typeof(Order), typeof(Product));
 
             var migrationOptions = new SchemaMigrationOptions();
-            var updateSchemaStatements = dataStoreSupportsMigration.CompareSchema(targetSchema, migrationOptions);
+            var updateSchemaStatements = migrationProvider.CompareSchema(targetSchema, migrationOptions);
             string sql = migrationScriptFormatter.FormatUpdateSchemaScript(updateSchemaStatements);
 
             Console.WriteLine("SQL Script to database schema migration:");

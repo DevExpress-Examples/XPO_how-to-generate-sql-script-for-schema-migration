@@ -15,14 +15,14 @@ Namespace XpoSchemaMigration
         Shared Sub Main(ByVal args() As String)
 
             Dim provider As IDataStore = XpoDefault.GetConnectionProvider(ConnectionString, AutoCreateOption.DatabaseAndSchema)
-            Dim dataStoreSupportsMigration = DirectCast(provider, IDataStoreSupportSchemaMigration)
+            Dim migrationProvider = DirectCast(provider, IDataStoreSchemaMigrationProvider)
             Dim migrationScriptFormatter = DirectCast(provider, IUpdateSchemaSqlFormatter)
 
             Dim dictionary = New ReflectionDictionary()
             Dim targetSchema() As DBTable = dictionary.GetDataStoreSchema(GetType(Customer), GetType(Order), GetType(Product))
 
             Dim migrationOptions = New SchemaMigrationOptions()
-            Dim updateSchemaStatements = dataStoreSupportsMigration.CompareSchema(targetSchema, migrationOptions)
+            Dim updateSchemaStatements = migrationProvider.CompareSchema(targetSchema, migrationOptions)
             Dim sql As String = migrationScriptFormatter.FormatUpdateSchemaScript(updateSchemaStatements)
 
             Console.WriteLine("SQL Script to database schema migration:")
