@@ -15,7 +15,7 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="20.1.12" />
+    <PackageReference Include="DevExpress.Xpo" Version="20.1.13" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.1" />
   </ItemGroup>
 </Project>
