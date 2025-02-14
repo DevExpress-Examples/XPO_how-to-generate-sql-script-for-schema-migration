@@ -54,6 +54,7 @@ Dim updateSchemaStatements = migrationProvider.CompareSchema(targetSchema, migra
 Dim sql As String = migrationScriptFormatter.FormatUpdateSchemaScript(updateSchemaStatements)
 ```
 </details>
+
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
